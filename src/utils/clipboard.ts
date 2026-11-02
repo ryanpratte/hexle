@@ -25,7 +25,7 @@ const getClipboardText = (
   else {
     tries = endingGrid.length.toString();
   }
-  let lettersText = `Hexle ${hexleNumber} ${tries}/6\nhttps://frankljin.github.io/hexle/\n`;
+  let lettersText = `Hexle ${hexleNumber} ${tries}/6\nhttps://ryanpratte.github.io/hexle/\n`;
 
   // Loop over each row and reduce into a single string
   lettersText += endingGrid.map((row: GridRowData) => {

@@ -1,7 +1,7 @@
 {
   "name": "hexle",
   "version": "0.1.0",
-  "homepage": "http://frankljin.github.io/hexle",
+  "homepage": "https://ryanpratte.github.io/hexle",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",

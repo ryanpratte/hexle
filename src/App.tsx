@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Grid from "./components/Grid";
 import AboutModal from "./components/AboutModal";
-import { answers } from "./answers";
+import { getAnswer, getHexleNumber } from "./answers";
 import "./App.css";
 import FinishModal from "./components/FinishModal";
 import { GridData } from "./utils/types";
@@ -12,15 +12,8 @@ function App() {
     myGa();
   }, []);
 
-  const hexleNumber = (date: Date) => {
-    let start = new Date(date.getFullYear(), 0, 0);
-    let diff = (date.valueOf() - start.valueOf()) + ((start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000);
-    let oneDay = 1000 * 60 * 60 * 24;
-    return Math.floor(diff / oneDay) - 61;
-  }
-    
-
-  const dayKey = hexleNumber(new Date());
+  const todaysNumber = getHexleNumber(new Date());
+  const dayKey = todaysNumber;
 
   // Ending state of the grid, used in FinishModal for clipboard purposes.
   const [endingGrid, setEndingGrid] = useState<null | GridData>();
@@ -34,7 +27,7 @@ function App() {
     return !localStorage.getItem(dayKey.toString())
   });
 
-  const hexOfDay = answers[hexleNumber(new Date())];
+  const hexOfDay = getAnswer(new Date());
 
   const handleWin = (gridData: GridData) => {
     setWin(true);
@@ -73,7 +66,7 @@ function App() {
         win={win}
         lose={lose}
         endingGrid={endingGrid || []}
-        hexleNumber={hexleNumber(new Date())}
+        hexleNumber={todaysNumber}
         hexOfDay={hexOfDay}
       />
       <AboutModal
